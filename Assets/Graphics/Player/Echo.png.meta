@@ -1,0 +1,695 @@
+fileFormatVersion: 2
+guid: 35a1cc484add6bd4ca235832aa00c8da
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 175
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Echo_8
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1777
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d1167b9de2886c4eaaa6527ecc48280
+      internalID: 1113376372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_12
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 1297
+        width: 355
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2e6c5a6dd791148a19634b4a851744
+      internalID: -945379404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_13
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 1297
+        width: 384
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 654a6a81468dc2a4dae6c6c5e5ff4da3
+      internalID: -213351411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_14
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 1297
+        width: 391
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd0deecf678153044b0cb61aa306a9e5
+      internalID: 262123499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_16
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 1301
+        width: 350
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a46f65d45a8734141a68eb658dec1f08
+      internalID: 1455651722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_17
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 1299
+        width: 356
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 004bdda0a23c4a34791d633261151e47
+      internalID: 1639461031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_18
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 875
+        width: 328
+        height: 404
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 388747148fe3be34fac0ac05a70d6f06
+      internalID: -1541368266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_52
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 490
+        width: 332
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4bdf4aee008b12458d0604b537114fb
+      internalID: 1183813068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_54
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 485
+        width: 308
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fda25cc1093fc3c4f8e287c914f1e9a3
+      internalID: -1423765239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_56
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 487
+        width: 321
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 612510a31b46ee049a8dd2e1b256613a
+      internalID: 1909479785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_57
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 471
+        width: 356
+        height: 405
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f7ac233ea5792147b60da458e5a3b41
+      internalID: -1353004932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_58
+      rect:
+        serializedVersion: 2
+        x: 1482
+        y: 471
+        width: 373
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97249c7e5ebddc94d880904fadba1310
+      internalID: -316149453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_63
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 84
+        width: 316
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd7b309a38f0edf4cbe3c102d04aa317
+      internalID: 622391803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_64
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 84
+        width: 311
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb554885630c7904289f09b2d2223e9b
+      internalID: 997546698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_67
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 87
+        width: 314
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e94067003a64a4542ac935fc1c0154e7
+      internalID: 1659575590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_69
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 379
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aada559732ca5a4ba62d51b6920ecaf
+      internalID: 1121552797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_70
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 1
+        width: 345
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6794b28a40a3a4ea0dd2248b76591e
+      internalID: -1732129709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_0
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 878
+        width: 398
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 084c342ca726b0d44a89d415f50050e3
+      internalID: 806889793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_1
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 883
+        width: 287
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f9881e22c0b628419c6ae94023995dd
+      internalID: -2118182183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_2
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 878
+        width: 330
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7622eb5c6f15abd45bbf7e6fd586e062
+      internalID: 221331825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_3
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 873
+        width: 370
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3284b215860cb064aa00e1bd36ea7f4b
+      internalID: 2132494678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Echo_4
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 80
+        width: 347
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056f15c370690c448b6e309de50248ba
+      internalID: -1767251415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Echo_0: 806889793
+      Echo_1: -2118182183
+      Echo_10: -1473468633
+      Echo_11: -2018940269
+      Echo_12: -945379404
+      Echo_13: -213351411
+      Echo_14: 262123499
+      Echo_15: -817512465
+      Echo_16: 1455651722
+      Echo_17: 1639461031
+      Echo_18: -1541368266
+      Echo_19: -657774774
+      Echo_2: 221331825
+      Echo_20: 1589636856
+      Echo_21: 1086046294
+      Echo_22: -1190047169
+      Echo_23: -1177999013
+      Echo_24: -1155961255
+      Echo_25: -1784762419
+      Echo_26: -1426374159
+      Echo_27: -1231529694
+      Echo_28: 828130930
+      Echo_29: 2103573682
+      Echo_3: 2132494678
+      Echo_30: -2072109320
+      Echo_31: -912752471
+      Echo_32: 1759218695
+      Echo_33: -910893809
+      Echo_34: -1541642756
+      Echo_35: -1033240681
+      Echo_36: -556975987
+      Echo_37: -1712920807
+      Echo_38: -1291799739
+      Echo_39: 1215713903
+      Echo_4: -1767251415
+      Echo_40: -1107541375
+      Echo_41: -533272536
+      Echo_42: 549843548
+      Echo_43: 608841462
+      Echo_44: -496165605
+      Echo_45: -2117282555
+      Echo_46: 210960930
+      Echo_47: -561197884
+      Echo_48: -1203776664
+      Echo_49: -1543167779
+      Echo_5: -824060251
+      Echo_50: 1044473
+      Echo_51: 745442491
+      Echo_52: 1183813068
+      Echo_53: -1172476569
+      Echo_54: -1423765239
+      Echo_55: -1251158315
+      Echo_56: 1909479785
+      Echo_57: -1353004932
+      Echo_58: -316149453
+      Echo_59: 1763672929
+      Echo_6: 23864252
+      Echo_60: -1684716938
+      Echo_61: -1129936936
+      Echo_62: -1459032086
+      Echo_63: 622391803
+      Echo_64: 997546698
+      Echo_65: -454153167
+      Echo_66: -1391430371
+      Echo_67: 1659575590
+      Echo_68: 2034142643
+      Echo_69: 1121552797
+      Echo_7: -1992174646
+      Echo_70: -1732129709
+      Echo_71: 1470238955
+      Echo_72: 1114539897
+      Echo_73: -234993161
+      Echo_74: -1336678930
+      Echo_75: -616821659
+      Echo_76: 1252094383
+      Echo_77: -1431489445
+      Echo_78: -2120588792
+      Echo_79: 1615894498
+      Echo_8: 1113376372
+      Echo_80: -1819170176
+      Echo_81: -991155413
+      Echo_82: 1888794212
+      Echo_83: 216444643
+      Echo_84: 59161777
+      Echo_85: -55945061
+      Echo_86: 221703310
+      Echo_87: -1198733183
+      Echo_88: 199872769
+      Echo_89: 2029783741
+      Echo_9: -637437937
+      Echo_90: 1944168569
+      Echo_91: 1231675431
+      Echo_92: 1416720376
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

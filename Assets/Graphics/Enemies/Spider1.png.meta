@@ -1,0 +1,1402 @@
+fileFormatVersion: 2
+guid: 8bf3685b31a7ed64bb22012a68dedb2b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spider1_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1198
+        width: 206
+        height: 205
+      alignment: 9
+      pivot: {x: 0.4956557, y: 0.53492224}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 036909ca1bf9d1444ac3e96ccd29a065
+      internalID: 1736571273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_1
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1210
+        width: 207
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d251a5158ebe0e944a2a6957c37d494e
+      internalID: -1868186295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_3
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1210
+        width: 208
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaec40010532975479473ac8483574f5
+      internalID: -20071807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_4
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 1212
+        width: 208
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b3fc4e6fe39c347824c856b8043706
+      internalID: 432379272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_5
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 1210
+        width: 207
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f179d6068e8784282334be9c8524a5
+      internalID: -1430913669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_6
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 1210
+        width: 208
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc41d83d8ae47b442b5ff5e0611bc5dd
+      internalID: -630890523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_7
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 1210
+        width: 215
+        height: 198
+      alignment: 9
+      pivot: {x: 0.48751363, y: 0.45932406}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d4f6aeab8c21249aa4bea0134eba2c
+      internalID: 1371801406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_9
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 969
+        width: 211
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cbf53ec297987f42b3219d167328ccc
+      internalID: -2052558182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_10
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 975
+        width: 211
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 674510694b1357640a952bfd98bd8d46
+      internalID: -1809836941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_11
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 982
+        width: 206
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b23ba08c0def7d440b87394aa3d22378
+      internalID: 129413085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_12
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 982
+        width: 206
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 772de3b7197957b4bb3d1e9c9657947d
+      internalID: -401351108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_13
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 982
+        width: 209
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c8e67c160fba58468bce51205f86801
+      internalID: -552104180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_14
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 981
+        width: 213
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f7ad5bc0aa6d824b947cbd33ec91ef0
+      internalID: 2052874796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_15
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 988
+        width: 213
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffff48511149c83408038f773e251174
+      internalID: -2134826799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_16
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 982
+        width: 212
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 002f8d2aed45b71418082dbd16c85f18
+      internalID: 260732666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_17
+      rect:
+        serializedVersion: 2
+        x: 1878
+        y: 975
+        width: 212
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c067724fd2e9545be903098b76a660
+      internalID: -507042366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_21
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 749
+        width: 215
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94bb1ebf942fbb46af770f086ff5a52
+      internalID: -149488533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_22
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 746
+        width: 216
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b85c0df757f644da2a06c00d417252
+      internalID: 933968364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_24
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 745
+        width: 210
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78305e40d4fd7184aa32daa8c7fa5317
+      internalID: -543190440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_25
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 745
+        width: 214
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09530014f9f05c94b898b71b5227bbf4
+      internalID: -1363084851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_26
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 746
+        width: 213
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fdfa69b7e77f9b49a0012759e753f16
+      internalID: -1953470443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_27
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 745
+        width: 213
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 857c18d9cc2e1fe4aba6621831e0eda2
+      internalID: 1357489429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_28
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 501
+        width: 233
+        height: 311
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfb31c0f72cebe04c98de2e40509bad2
+      internalID: 437174020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_29
+      rect:
+        serializedVersion: 2
+        x: 1749
+        y: 789
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb35cce6a38ae9c4990d9c1d7a60d28f
+      internalID: 1088637403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_35
+      rect:
+        serializedVersion: 2
+        x: 2111
+        y: 503
+        width: 217
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62915fb8beb5e2542b1e986deee66985
+      internalID: -376091975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_38
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 506
+        width: 456
+        height: 203
+      alignment: 9
+      pivot: {x: 0.2326157, y: 0.47116977}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2414084f7592b54b995b70639493939
+      internalID: 668536600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_39
+      rect:
+        serializedVersion: 2
+        x: 2569
+        y: 503
+        width: 220
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d342b310e519714b9d3eade20ea8f93
+      internalID: -1784566356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_40
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 506
+        width: 209
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6371ea6d46da52841b89cecee68783fd
+      internalID: 1208197545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_41
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 507
+        width: 209
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2943a9c9c0ee85d40a1b0bbca7b3cabf
+      internalID: 448527436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_42
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 507
+        width: 210
+        height: 196
+      alignment: 9
+      pivot: {x: 0.49535492, y: 0.49004567}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b6671a71407da743bf6606bfd2461b0
+      internalID: 1492849826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_43
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 507
+        width: 221
+        height: 192
+      alignment: 9
+      pivot: {x: 0.46910435, y: 0.49491945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 554e9d73ea3396140af13f89a0d5bb85
+      internalID: 1173456573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_44
+      rect:
+        serializedVersion: 2
+        x: 1417
+        y: 501
+        width: 213
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d97e89b48eb5e72469b1249ed650af25
+      internalID: -937807070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_45
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 504
+        width: 213
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977c300659735ae4cab3c230e2b243d0
+      internalID: -508470782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_46
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 503
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4921dbe408fd814aa14d28eb413de64
+      internalID: 777991521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_54
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 297
+        width: 201
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 493d385879e5093479fc28d503d51769
+      internalID: 743239248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_55
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 293
+        width: 209
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a47c77948e769f04792b0fcc2bdda677
+      internalID: -30758909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_56
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 250
+        width: 210
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08e69ca233fd684418506040bbfab834
+      internalID: 539961509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_57
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 262
+        width: 216
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da18132c3977fad48893e57f3ddf9c7f
+      internalID: 222492161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_58
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 269
+        width: 210
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e2c5c3ea63bae4bbf009ceaaad5e8e
+      internalID: -11857515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_59
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 261
+        width: 213
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ec67941c5dbede4b9e657d40f7f0250
+      internalID: -495157779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_61
+      rect:
+        serializedVersion: 2
+        x: 2111
+        y: 261
+        width: 211
+        height: 195
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 251786bbe3ffe094ba48ca0046d5a6f9
+      internalID: 27128839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_62
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 261
+        width: 213
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6828d1002df4d841932fac2e93fa774
+      internalID: 1170425597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_63
+      rect:
+        serializedVersion: 2
+        x: 2569
+        y: 261
+        width: 213
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 972b89b1d952aba4f847c05a556cea05
+      internalID: 877700798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_66
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 261
+        width: 482
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b2d1d0d753f4974ca31f84426e86b12
+      internalID: 2020002132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_78
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 22
+        width: 211
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4d2e33d6ceedd2448ab2f6a9cce5e9e
+      internalID: -1199011561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_79
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 12
+        width: 217
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc096533482e2c4aa30285468cd5273
+      internalID: 1629056411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_81
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 22
+        width: 209
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07046606e6925984091e9380c5f9f46e
+      internalID: -1628042366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_82
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 22
+        width: 210
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c9714dfd942fa446abb77384fe4c096
+      internalID: 1698025321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_87
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 10
+        width: 207
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 404cd787c90cd6644b3dbf71883ba256
+      internalID: 2131955076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_88
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 21
+        width: 210
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64f428e1f52ad3f45a2da6a82455ac5e
+      internalID: -1068808934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_93
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 15
+        width: 219
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb14f6c21cf67d141bec20044f241767
+      internalID: -1242082698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_94
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 21
+        width: 207
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b86b8d3aebe8f04e93c13ece7a237b7
+      internalID: -1185462577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_96
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 22
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c1c943ff056bf49b36e065d13e040a
+      internalID: 2023006424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_97
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 66
+        width: 4
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e501087478f061047814f07e5e252dd5
+      internalID: 1221468967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider1_98
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 0
+        width: 210
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c1ac30bf278dd4aa842c92271911b9
+      internalID: 2071263673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Spider1_0: 1736571273
+      Spider1_1: -1868186295
+      Spider1_10: -1809836941
+      Spider1_100: 1422697852
+      Spider1_101: -184121201
+      Spider1_102: -526477060
+      Spider1_103: 2090527830
+      Spider1_104: 811012923
+      Spider1_105: 1765950321
+      Spider1_106: 207940221
+      Spider1_11: 129413085
+      Spider1_12: -401351108
+      Spider1_13: -552104180
+      Spider1_14: 2052874796
+      Spider1_15: -2134826799
+      Spider1_16: 260732666
+      Spider1_17: -507042366
+      Spider1_18: 142968808
+      Spider1_19: -736460159
+      Spider1_2: 1862053688
+      Spider1_20: -1938082272
+      Spider1_21: -149488533
+      Spider1_22: 933968364
+      Spider1_23: -330110503
+      Spider1_24: -543190440
+      Spider1_25: -1363084851
+      Spider1_26: -1953470443
+      Spider1_27: 1357489429
+      Spider1_28: 437174020
+      Spider1_29: 1088637403
+      Spider1_3: -20071807
+      Spider1_30: -1397578794
+      Spider1_31: 2084510065
+      Spider1_32: -582084249
+      Spider1_33: -867313594
+      Spider1_34: -1787387783
+      Spider1_35: -376091975
+      Spider1_36: -1018326114
+      Spider1_37: 476145569
+      Spider1_38: 668536600
+      Spider1_39: -1784566356
+      Spider1_4: 432379272
+      Spider1_40: 1208197545
+      Spider1_41: 448527436
+      Spider1_42: 1492849826
+      Spider1_43: 1173456573
+      Spider1_44: -937807070
+      Spider1_45: -508470782
+      Spider1_46: 777991521
+      Spider1_47: 651765228
+      Spider1_48: -1063759942
+      Spider1_49: -193529444
+      Spider1_5: -1430913669
+      Spider1_50: 173703438
+      Spider1_51: 806965960
+      Spider1_52: -1588246584
+      Spider1_53: -1184037676
+      Spider1_54: 743239248
+      Spider1_55: -30758909
+      Spider1_56: 539961509
+      Spider1_57: 222492161
+      Spider1_58: -11857515
+      Spider1_59: -495157779
+      Spider1_6: -630890523
+      Spider1_60: 176531608
+      Spider1_61: 27128839
+      Spider1_62: 1170425597
+      Spider1_63: 877700798
+      Spider1_64: 1668219417
+      Spider1_65: 630312125
+      Spider1_66: 2020002132
+      Spider1_67: 1284125051
+      Spider1_68: 393070527
+      Spider1_69: 1145825073
+      Spider1_7: 1371801406
+      Spider1_70: -2057604513
+      Spider1_71: -2045346786
+      Spider1_72: -1793457669
+      Spider1_73: 1356185090
+      Spider1_74: -1459856063
+      Spider1_75: 936722915
+      Spider1_76: -358434304
+      Spider1_77: 1806111249
+      Spider1_78: -1199011561
+      Spider1_79: 1629056411
+      Spider1_8: -932615995
+      Spider1_80: 1051377512
+      Spider1_81: -1628042366
+      Spider1_82: 1698025321
+      Spider1_83: 71134001
+      Spider1_84: -1800732983
+      Spider1_85: 1782996225
+      Spider1_86: -609883742
+      Spider1_87: 2131955076
+      Spider1_88: -1068808934
+      Spider1_89: 2019080641
+      Spider1_9: -2052558182
+      Spider1_90: -2075713989
+      Spider1_91: -276888637
+      Spider1_92: -1619923996
+      Spider1_93: -1242082698
+      Spider1_94: -1185462577
+      Spider1_95: 2019400178
+      Spider1_96: 2023006424
+      Spider1_97: 1221468967
+      Spider1_98: 2071263673
+      Spider1_99: 968860151
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

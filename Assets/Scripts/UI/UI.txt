@@ -1,0 +1,819 @@
+using System;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+[RequireComponent(typeof(PlayerInventory))]
+[RequireComponent(typeof(PlayerEquipment))]
+[RequireComponent(typeof(PlayerStats))]
+[RequireComponent(typeof(PlayerProgression))]
+public class UI_Inventory : MonoBehaviour
+{
+    private enum PlayerMenuTab { Status, Inventory }
+
+    // ═══════════════════════════════════════════════
+    //  颜色常量 — 奇幻魔法风格色板
+    // ═══════════════════════════════════════════════
+    private static readonly Color32 C_BG_DARK        = new Color32( 13,  11,  23, 247);  // 主面板深底色
+    private static readonly Color32 C_BG_PANEL       = new Color32( 18,  14,  33, 242);  // 子面板底色
+    private static readonly Color32 C_BG_ROW         = new Color32( 23,  18,  41, 235);  // 物品行底色
+    private static readonly Color32 C_BG_ROW_SEL     = new Color32( 51,  36,  92, 245);  // 选中行底色
+    private static readonly Color32 C_BORDER         = new Color32( 59,  46,  90, 255);  // 默认边框（深紫）
+    private static readonly Color32 C_BORDER_ACCENT  = new Color32(122,  94, 167, 255);  // 强调边框（亮紫）
+    private static readonly Color32 C_GOLD           = new Color32(200, 169, 110, 255);  // 金色（标题/激活）
+    private static readonly Color32 C_PURPLE         = new Color32(122,  94, 167, 255);  // 紫色（副标题/标签）
+    private static readonly Color32 C_TEXT_PRIMARY   = new Color32(224, 215, 245, 255);  // 主文字（淡紫白）
+    private static readonly Color32 C_TEXT_MUTED     = new Color32(102,  87, 143, 255);  // 次要文字
+    private static readonly Color32 C_TEXT_HINT      = new Color32( 71,  57, 107, 255);  // 提示/空状态文字
+    private static readonly Color32 C_BTN_GOLD_BG    = new Color32(200, 169, 110,  38);  // 装备按钮底色
+    private static readonly Color32 C_BTN_PURPLE_BG  = new Color32(122,  94, 167,  26);  // 查看按钮底色
+    private static readonly Color32 C_SLOT_EMPTY     = new Color32( 15,  10,  26, 204);  // 空格子底色
+    private static readonly Color32 C_SLOT_FILLED    = new Color32( 22,  16,  40, 230);  // 有物品格子底色
+    private static readonly Color32 C_STAT_GREEN     = new Color32(160, 232, 160, 255);  // 属性加成值（绿色）
+    private static readonly Color32 C_HP_RED         = new Color32(239,  68,  68, 255);  // HP条颜色
+    private static readonly Color32 C_EXP_PURPLE     = new Color32(122,  94, 167, 255);  // EXP条颜色
+
+    // ═══════════════════════════════════════════════
+    //  Inspector 字段
+    // ═══════════════════════════════════════════════
+    [SerializeField] private KeyCode toggleKey = KeyCode.I;
+
+    [Header("字体设置")]
+    [SerializeField] private TMP_FontAsset bodyFont;    // 正文字体（Crimson Text 等衬线体）
+    [SerializeField] private TMP_FontAsset titleFont;   // 标题字体（Cinzel 等奇幻感字体）
+    [SerializeField] private Material fontMaterial;     // 可选：带发光效果的字体材质
+
+    [Header("布局参数")]
+    [SerializeField] private int   gridCols      = 5;   // 背包网格列数
+    [SerializeField] private int   gridTotalSlot = 20;  // 背包总格子数
+    [SerializeField] private float slotSize      = 58f; // 格子尺寸（px）
+    [SerializeField] private float slotGap       = 6f;  // 格子间距（px）
+
+    [Header("面板文字")]
+    [SerializeField] private string menuTitleText        = "Inventory";
+    [SerializeField] private string closeHintTemplate    = "Press {0} to close";
+    [SerializeField] private string statusTabText        = "Status";
+    [SerializeField] private string inventoryTabText     = "Inventory";
+    [SerializeField] private string overviewHeaderText   = "Overview";
+    [SerializeField] private string statsHeaderText      = "Stats";
+    [SerializeField] private string bagHeaderText        = "Bag";
+    [SerializeField] private string detailsHeaderText    = "Details";
+    [SerializeField] private string equipmentHeaderText  = "Equipment";
+    [SerializeField] private string bagEmptyText         = "No items in possession.";
+    [SerializeField] private string noItemSelectedText   = "Select an item to inspect\nits arcane properties...";
+
+    // ═══════════════════════════════════════════════
+    //  私有字段
+    // ═══════════════════════════════════════════════
+    private PlayerInventory   _inventory;
+    private PlayerEquipment   _equipment;
+    private PlayerStats       _stats;
+    private PlayerProgression _progression;
+
+    private GameObject    _canvasGo;
+    private GameObject    _panelGo;
+    private GameObject    _statusPage;
+    private GameObject    _inventoryPage;
+    private RectTransform _gridContent;      // 物品网格父节点
+    private RectTransform _equipListContent; // 装备槽列表父节点
+
+    private TMP_Text _statusSummaryText;
+    private TMP_Text _statusStatsText;
+    private TMP_Text _detailHintText;
+    private TMP_Text _detailNameText;
+    private TMP_Text _detailTypeText;
+    private TMP_Text _detailStatsText;
+    private GameObject _detailBtnRoot;
+
+    private Button        _statusTabBtn;
+    private Button        _inventoryTabBtn;
+    private PlayerMenuTab _currentTab = PlayerMenuTab.Status;
+    private Image         _selectedSlotImg; // 当前高亮的格子 Image
+
+    // ═══════════════════════════════════════════════
+    //  Unity 生命周期
+    // ═══════════════════════════════════════════════
+    private void Awake()
+    {
+        _inventory   = GetComponent<PlayerInventory>();
+        _equipment   = GetComponent<PlayerEquipment>();
+        _stats       = GetComponent<PlayerStats>();
+        _progression = GetComponent<PlayerProgression>();
+
+        EnsureEventSystem();
+        BuildUi();
+        RefreshUi();
+        ShowTab(PlayerMenuTab.Status);
+        SetVisible(false);
+    }
+
+    private void OnEnable()
+    {
+        if (_inventory   != null) _inventory.InventoryChanged      += RefreshUi;
+        if (_equipment   != null) _equipment.EquipmentChanged      += RefreshUi;
+        if (_stats       != null) _stats.StatsChanged              += RefreshUi;
+        if (_progression != null) _progression.ProgressionChanged  += RefreshUi;
+    }
+
+    private void OnDisable()
+    {
+        if (_inventory   != null) _inventory.InventoryChanged      -= RefreshUi;
+        if (_equipment   != null) _equipment.EquipmentChanged      -= RefreshUi;
+        if (_stats       != null) _stats.StatsChanged              -= RefreshUi;
+        if (_progression != null) _progression.ProgressionChanged  -= RefreshUi;
+    }
+
+    private void OnDestroy()
+    {
+        if (_canvasGo != null) Destroy(_canvasGo);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(toggleKey)) ToggleInventory();
+    }
+
+    // ═══════════════════════════════════════════════
+    //  公开 API
+    // ═══════════════════════════════════════════════
+    public void OpenInventory()  { SetVisible(true);  ShowTab(PlayerMenuTab.Inventory); }
+    public void OpenStatus()     { SetVisible(true);  ShowTab(PlayerMenuTab.Status);    }
+    public void CloseInventory() { SetVisible(false); }
+    public void ToggleInventory()
+    {
+        bool next = _panelGo == null || !_panelGo.activeSelf;
+        SetVisible(next);
+        if (next) ShowTab(_currentTab);
+    }
+
+    // ═══════════════════════════════════════════════
+    //  BuildUi — 构建 Canvas 与面板
+    // ═══════════════════════════════════════════════
+    private void BuildUi()
+    {
+        // Canvas
+        _canvasGo = new GameObject("PlayerMenuCanvas");
+        var canvas = _canvasGo.AddComponent<Canvas>();
+        canvas.renderMode   = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 100;
+
+        var scaler = _canvasGo.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1920f, 1080f);
+        scaler.screenMatchMode     = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+        scaler.matchWidthOrHeight  = 0.5f;
+        _canvasGo.AddComponent<GraphicRaycaster>();
+
+        var root = canvas.GetComponent<RectTransform>();
+
+        // 主面板 1100×740，深紫底色 + 边框
+        _panelGo = MakePanel("MainPanel", root, C_BG_DARK, new Vector2(1100f, 740f), C_BORDER, 1.5f);
+        var panel = _panelGo.GetComponent<RectTransform>();
+        panel.anchorMin = panel.anchorMax = panel.pivot = new Vector2(0.5f, 0.5f);
+        panel.anchoredPosition = Vector2.zero;
+
+        BuildHeader(panel);
+        BuildTabBar(panel);
+
+        // 两个页面根节点，顶部偏移 160 为 header+tabbar 高度
+        _statusPage    = MakePage("StatusPage",    panel, new Vector2(24f, -160f), new Vector2(1052f, 540f));
+        _inventoryPage = MakePage("InventoryPage", panel, new Vector2(24f, -160f), new Vector2(1052f, 540f));
+
+        BuildStatusPage(_statusPage.transform);
+        BuildInventoryPage(_inventoryPage.transform);
+    }
+
+    // ─── Header ──────────────────────────────────────────────────────
+    private void BuildHeader(RectTransform panel)
+    {
+        // 标题
+        var title = MakeText("Title", panel, menuTitleText, 26f, FontStyles.Bold,
+            TextAlignmentOptions.Left, new Vector2(36f, -28f), new Vector2(500f, 48f));
+        title.color = C_GOLD;
+        ApplyTitleFont(title);
+
+        // 关闭提示
+        var hint = MakeText("CloseHint", panel, string.Format(closeHintTemplate, toggleKey),
+            15f, FontStyles.Normal, TextAlignmentOptions.Right,
+            new Vector2(-36f, -30f), new Vector2(240f, 32f), new Vector2(1f, 1f));
+        hint.color = C_TEXT_HINT;
+
+        // Header 底部分割线
+        MakeDivider("HeaderLine", panel, new Vector2(0f, 1f), new Vector2(1f, 1f),
+            new Vector2(0f, -90f), new Vector2(0f, 1f));
+    }
+
+    // ─── Tab Bar ──────────────────────────────────────────────────────
+    private void BuildTabBar(RectTransform panel)
+    {
+        var bar = MakeRect("TabBar", panel, new Vector2(0f,1f), new Vector2(1f,1f),
+            new Vector2(0f,-142f), new Vector2(0f,52f));
+        bar.GetOrAdd<Image>().color = new Color32(0,0,0,46);
+        MakeDivider("TabLine", bar, new Vector2(0f,0f), new Vector2(1f,0f),
+            Vector2.zero, new Vector2(0f,1f));
+
+        _statusTabBtn    = MakeTabButton("TabStatus",    bar, statusTabText,    new Vector2(32f,0f));
+        _inventoryTabBtn = MakeTabButton("TabInventory", bar, inventoryTabText, new Vector2(192f,0f));
+
+        _statusTabBtn.onClick.AddListener(()    => ShowTab(PlayerMenuTab.Status));
+        _inventoryTabBtn.onClick.AddListener(() => ShowTab(PlayerMenuTab.Inventory));
+    }
+
+    private Button MakeTabButton(string name, RectTransform parent, string label, Vector2 pos)
+    {
+        var go  = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        var img = go.AddComponent<Image>();
+        img.color = Color.clear;
+        var btn = go.AddComponent<Button>();
+        btn.targetGraphic = img;
+        var cb = btn.colors;
+        cb.normalColor = Color.clear;
+        cb.highlightedColor = new Color32(255,255,255,13);
+        cb.pressedColor = new Color32(255,255,255,20);
+        btn.colors = cb;
+
+        var rect = btn.GetComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0f,0f);
+        rect.anchorMax = new Vector2(0f,1f);
+        rect.pivot = new Vector2(0f,0.5f);
+        rect.sizeDelta = new Vector2(148f,0f);
+        rect.anchoredPosition = pos;
+
+        var lbl = MakeText("Label", rect, label, 14f, FontStyles.Bold,
+            TextAlignmentOptions.Center, Vector2.zero, Vector2.zero, new Vector2(0.5f,0.5f));
+        lbl.rectTransform.anchorMin = Vector2.zero;
+        lbl.rectTransform.anchorMax = Vector2.one;
+        lbl.rectTransform.offsetMin = lbl.rectTransform.offsetMax = Vector2.zero;
+        lbl.color = C_TEXT_MUTED;
+        ApplyTitleFont(lbl);
+
+        // 底部激活指示线
+        var ind = new GameObject("Indicator");
+        ind.transform.SetParent(rect, false);
+        var indImg  = ind.AddComponent<Image>();
+        indImg.color = Color.clear;
+        var indRect = ind.GetComponent<RectTransform>();
+        indRect.anchorMin = new Vector2(0.05f,0f);
+        indRect.anchorMax = new Vector2(0.95f,0f);
+        indRect.pivot     = new Vector2(0.5f,0f);
+        indRect.sizeDelta = new Vector2(0f,2f);
+        indRect.anchoredPosition = Vector2.zero;
+
+        return btn;
+    }
+
+    // ═══════════════════════════════════════════════
+    //  状态页 (Status Page)
+    // ═══════════════════════════════════════════════
+    private void BuildStatusPage(Transform parent)
+    {
+        // 概览面板
+        var summaryPanel = MakePanel("SummaryPanel", parent, C_BG_PANEL,
+            new Vector2(320f,510f), C_BORDER, 1f);
+        summaryPanel.anchorMin = summaryPanel.anchorMax = summaryPanel.pivot = new Vector2(0f,1f);
+        summaryPanel.anchoredPosition = Vector2.zero;
+        AddSectionLabel("SummaryLabel", summaryPanel, overviewHeaderText);
+
+        // 属性面板
+        var statsPanel = MakePanel("StatsPanel", parent, C_BG_PANEL,
+            new Vector2(700f,510f), C_BORDER, 1f);
+        statsPanel.anchorMin = statsPanel.anchorMax = new Vector2(1f,1f);
+        statsPanel.pivot = new Vector2(1f,1f);
+        statsPanel.anchoredPosition = Vector2.zero;
+        AddSectionLabel("StatsLabel", statsPanel, statsHeaderText);
+
+        _statusSummaryText = MakeText("SummaryText", summaryPanel, string.Empty,
+            18f, FontStyles.Normal, TextAlignmentOptions.TopLeft,
+            new Vector2(20f,-56f), new Vector2(280f,400f));
+        _statusSummaryText.color = C_TEXT_PRIMARY;
+        _statusSummaryText.lineSpacing = 8f;
+        _statusSummaryText.enableWordWrapping = true;
+
+        _statusStatsText = MakeText("StatsText", statsPanel, string.Empty,
+            18f, FontStyles.Normal, TextAlignmentOptions.TopLeft,
+            new Vector2(20f,-56f), new Vector2(660f,400f));
+        _statusStatsText.color = C_TEXT_PRIMARY;
+        _statusStatsText.lineSpacing = 8f;
+    }
+
+    // ═══════════════════════════════════════════════
+    //  背包页 (Inventory Page)
+    // ═══════════════════════════════════════════════
+    private void BuildInventoryPage(Transform parent)
+    {
+        float bagW = gridCols * (slotSize + slotGap) - slotGap + 40f; // ≈354
+
+        // 背包网格面板
+        var bagPanel = MakePanel("BagPanel", parent, C_BG_PANEL,
+            new Vector2(bagW, 510f), C_BORDER, 1f);
+        bagPanel.anchorMin = bagPanel.anchorMax = bagPanel.pivot = new Vector2(0f,1f);
+        bagPanel.anchoredPosition = Vector2.zero;
+        AddSectionLabel("BagLabel", bagPanel, bagHeaderText);
+
+        // 装备槽列表面板
+        var equipPanel = MakePanel("EquipPanel", parent, C_BG_PANEL,
+            new Vector2(216f, 510f), C_BORDER, 1f);
+        equipPanel.anchorMin = equipPanel.anchorMax = new Vector2(0f,1f);
+        equipPanel.pivot = new Vector2(0f,1f);
+        equipPanel.anchoredPosition = new Vector2(bagW + 14f, 0f);
+        AddSectionLabel("EquipLabel", equipPanel, equipmentHeaderText);
+
+        // 详情面板
+        var detailPanel = MakePanel("DetailPanel", parent, C_BG_PANEL,
+            new Vector2(374f, 510f), C_BORDER, 1f);
+        detailPanel.anchorMin = detailPanel.anchorMax = new Vector2(1f,1f);
+        detailPanel.pivot = new Vector2(1f,1f);
+        detailPanel.anchoredPosition = Vector2.zero;
+        AddSectionLabel("DetailLabel", detailPanel, detailsHeaderText);
+
+        // 内容区
+        _gridContent = MakeGridContent("BagGrid", bagPanel,
+            new Vector2(20f,-52f), new Vector2(bagW-40f, 440f));
+
+        _equipListContent = MakeListContent("EquipList", equipPanel,
+            new Vector2(10f,10f), new Vector2(-10f,-54f));
+
+        BuildDetailPanel(detailPanel);
+    }
+
+    // ═══════════════════════════════════════════════
+    //  物品网格格子
+    // ═══════════════════════════════════════════════
+    private void CreateItemSlot(EquipmentItemData item)
+    {
+        bool hasItem = item != null;
+        var slot = MakePanel(
+            hasItem ? item.itemName : "EmptySlot",
+            _gridContent,
+            hasItem ? C_SLOT_FILLED : C_SLOT_EMPTY,
+            new Vector2(slotSize, slotSize),
+            hasItem ? C_BORDER_ACCENT : C_BORDER, 1f);
+
+        var slotImg = slot.GetComponent<Image>();
+
+        if (hasItem)
+        {
+            // 物品名缩写（2字母）— 实际项目替换为 item.icon Sprite
+            string abbr = item.itemName.Length >= 2
+                ? item.itemName.Substring(0,2).ToUpper()
+                : item.itemName.ToUpper();
+            var lbl = MakeText("Abbr", slot, abbr, 17f, FontStyles.Bold,
+                TextAlignmentOptions.Center, Vector2.zero,
+                new Vector2(slotSize,slotSize), new Vector2(0.5f,0.5f));
+            lbl.color = C_PURPLE;
+            ApplyTitleFont(lbl);
+
+            var et = slot.gameObject.GetOrAdd<EventTrigger>();
+            var captured    = item;
+            var capturedImg = slotImg;
+
+            AddPtrEvent(et, EventTriggerType.PointerClick, _ => {
+                if (_selectedSlotImg != null && _selectedSlotImg != capturedImg)
+                    _selectedSlotImg.color = C_SLOT_FILLED;
+                capturedImg.color = C_BG_ROW_SEL;
+                _selectedSlotImg = capturedImg;
+                ShowItemDetail(captured);
+            });
+            AddPtrEvent(et, EventTriggerType.PointerEnter, _ => {
+                if (capturedImg != _selectedSlotImg)
+                    capturedImg.color = new Color32(30,22,54,235);
+            });
+            AddPtrEvent(et, EventTriggerType.PointerExit, _ => {
+                if (capturedImg != _selectedSlotImg)
+                    capturedImg.color = C_SLOT_FILLED;
+            });
+        }
+    }
+
+    // ═══════════════════════════════════════════════
+    //  装备槽行
+    // ═══════════════════════════════════════════════
+    private void CreateEquippedRow(EquipmentSlotType slotType, EquipmentItemData item)
+    {
+        var row = MakePanel(slotType + "Row", _equipListContent,
+            C_BG_ROW, new Vector2(0f,70f), C_BORDER, 1f);
+        var le = row.gameObject.AddComponent<LayoutElement>();
+        le.preferredHeight = 70f;
+        le.flexibleWidth   = 1f;
+
+        var slotLbl = MakeText("Slot", row, slotType.ToString(), 12f, FontStyles.Bold,
+            TextAlignmentOptions.Left, new Vector2(10f,-8f), new Vector2(160f,20f));
+        slotLbl.color = C_PURPLE;
+        ApplyTitleFont(slotLbl);
+
+        string itemName = item != null ? item.itemName : "— Empty —";
+        var nameLbl = MakeText("Name", row, itemName, 15f, FontStyles.Normal,
+            TextAlignmentOptions.Left, new Vector2(10f,-30f), new Vector2(140f,22f));
+        nameLbl.color = item != null ? C_TEXT_PRIMARY : C_TEXT_HINT;
+
+        if (item != null)
+        {
+            var unequipBtn = MakeMagicBtn("Unequip", row, "Unequip",
+                new Vector2(-8f,-16f), new Vector2(70f,38f),
+                C_BTN_PURPLE_BG, C_BORDER_ACCENT);
+            var captured = item;
+            var capturedSlot = slotType;
+            unequipBtn.onClick.AddListener(() => UnequipItem(capturedSlot));
+        }
+    }
+
+    // ═══════════════════════════════════════════════
+    //  详情面板
+    // ═══════════════════════════════════════════════
+    private void BuildDetailPanel(RectTransform parent)
+    {
+        _detailHintText = MakeText("Hint", parent, noItemSelectedText,
+            16f, FontStyles.Italic, TextAlignmentOptions.Center,
+            new Vector2(0f,-200f), new Vector2(340f,120f), new Vector2(0.5f,1f));
+        _detailHintText.color = C_TEXT_HINT;
+
+        _detailNameText = MakeText("Name", parent, string.Empty,
+            22f, FontStyles.Bold, TextAlignmentOptions.Center,
+            new Vector2(0f,-60f), new Vector2(350f,36f), new Vector2(0.5f,1f));
+        _detailNameText.color = C_GOLD;
+        ApplyTitleFont(_detailNameText);
+        _detailNameText.gameObject.SetActive(false);
+
+        _detailTypeText = MakeText("Type", parent, string.Empty,
+            13f, FontStyles.Normal, TextAlignmentOptions.Center,
+            new Vector2(0f,-98f), new Vector2(350f,22f), new Vector2(0.5f,1f));
+        _detailTypeText.color = C_PURPLE;
+        ApplyTitleFont(_detailTypeText);
+        _detailTypeText.gameObject.SetActive(false);
+
+        _detailStatsText = MakeText("Stats", parent, string.Empty,
+            16f, FontStyles.Normal, TextAlignmentOptions.TopLeft,
+            new Vector2(20f,-132f), new Vector2(334f,280f));
+        _detailStatsText.color = C_TEXT_PRIMARY;
+        _detailStatsText.lineSpacing = 5f;
+        _detailStatsText.gameObject.SetActive(false);
+    }
+
+    private void ShowItemDetail(EquipmentItemData item)
+    {
+        if (_detailHintText == null) return;
+        bool has = item != null;
+        _detailHintText.gameObject.SetActive(!has);
+        _detailNameText?.gameObject.SetActive(has);
+        _detailTypeText?.gameObject.SetActive(has);
+        _detailStatsText?.gameObject.SetActive(has);
+        if (!has) return;
+
+        string name = string.IsNullOrWhiteSpace(item.itemName) ? "Unknown Relic" : item.itemName;
+        string desc = string.IsNullOrWhiteSpace(item.description) ? "Its origin is shrouded in mystery." : item.description;
+
+        if (_detailNameText)  _detailNameText.text  = name;
+        if (_detailTypeText)  _detailTypeText.text  = item.slotType.ToString().ToUpper();
+        if (_detailStatsText) _detailStatsText.text =
+            $"<color=#4a4060><i>{desc}</i></color>\n\n" +
+            $"<color=#7b5ea7>Max HP </color>  <color=#a0e8a0>+{item.statBonuses.maxHealth:0.0}</color>\n" +
+            $"<color=#7b5ea7>Attack  </color>  <color=#a0e8a0>+{item.statBonuses.attackPower:0.0}</color>\n" +
+            $"<color=#7b5ea7>Move    </color>  <color=#a0e8a0>+{item.statBonuses.moveSpeed:0.0}</color>\n" +
+            $"<color=#7b5ea7>Jump    </color>  <color=#a0e8a0>+{item.statBonuses.jumpForce:0.0}</color>\n" +
+            $"<color=#7b5ea7>Dash    </color>  <color=#a0e8a0>+{item.statBonuses.dashSpeed:0.0}</color>";
+
+        RefreshDetailButtons(item);
+    }
+
+    private void RefreshDetailButtons(EquipmentItemData item)
+    {
+        if (_detailBtnRoot != null) Destroy(_detailBtnRoot);
+        var detailPanel = _inventoryPage.transform.Find("DetailPanel");
+        if (detailPanel == null) return;
+
+        _detailBtnRoot = new GameObject("DetailBtns");
+        _detailBtnRoot.transform.SetParent(detailPanel, false);
+        var r = _detailBtnRoot.AddComponent<RectTransform>();
+        r.anchorMin = new Vector2(0f,0f); r.anchorMax = new Vector2(1f,0f);
+        r.pivot = new Vector2(0.5f,0f);
+        r.sizeDelta = new Vector2(-24f,44f);
+        r.anchoredPosition = new Vector2(0f,18f);
+
+        var equipBtn = MakeMagicBtn("Equip", r, "Equip",
+            new Vector2(0f,0f), new Vector2(160f,44f),
+            C_BTN_GOLD_BG, C_GOLD, new Vector2(0f,0f));
+        equipBtn.onClick.AddListener(() => EquipFromInventory(item));
+
+        var inspectBtn = MakeMagicBtn("Inspect", r, "Inspect",
+            new Vector2(168f,0f), new Vector2(160f,44f),
+            C_BTN_PURPLE_BG, C_BORDER_ACCENT, new Vector2(0f,0f));
+        inspectBtn.onClick.AddListener(() => ShowItemDetail(item));
+    }
+
+    // ═══════════════════════════════════════════════
+    //  刷新逻辑
+    // ═══════════════════════════════════════════════
+    private void RefreshUi()
+    {
+        RefreshStatus();
+        RefreshInventory();
+        RefreshTabVisuals();
+    }
+
+    private void RefreshStatus()
+    {
+        if (_statusSummaryText == null || _stats == null || _progression == null) return;
+
+        _statusSummaryText.text =
+            $"<color=#7b5ea7>Level</color>   {_progression.Level}\n\n" +
+            $"<color=#7b5ea7>EXP</color>     {_progression.CurrentExperience} / " +
+            $"{_progression.GetRequiredExperienceForNextLevel()}\n\n" +
+            $"<color=#7b5ea7>Gold</color>    {_progression.Gold}\n\n" +
+            $"<color=#7b5ea7>HP</color>      {_stats.CurrentHealth:0} / {_stats.MaxHealth:0}";
+
+        _statusStatsText.text =
+            $"<color=#7b5ea7>Attack    </color>  {_stats.AttackPower:0.0}\n\n" +
+            $"<color=#7b5ea7>Move Speed</color>  {_stats.MoveSpeed:0.0}\n\n" +
+            $"<color=#7b5ea7>Jump Force</color>  {_stats.JumpForce:0.0}\n\n" +
+            $"<color=#7b5ea7>Dash Speed</color>  {_stats.DashSpeed:0.0}";
+    }
+
+    private void RefreshInventory()
+    {
+        if (_gridContent == null || _equipListContent == null) return;
+
+        ClearChildren(_gridContent);
+        ClearChildren(_equipListContent);
+        _selectedSlotImg = null;
+
+        // 网格
+        var items = _inventory.Items;
+        for (int i = 0; i < gridTotalSlot; i++)
+            CreateItemSlot(i < items.Count ? items[i] : null);
+
+        // 装备槽
+        var lookup = new Dictionary<EquipmentSlotType, EquipmentItemData>();
+        foreach (var e in _equipment.GetEquippedEntries())
+            lookup[e.slotType] = e.itemData;
+
+        foreach (EquipmentSlotType s in (EquipmentSlotType[])Enum.GetValues(typeof(EquipmentSlotType)))
+        {
+            lookup.TryGetValue(s, out var equipped);
+            CreateEquippedRow(s, equipped);
+        }
+    }
+
+    // ═══════════════════════════════════════════════
+    //  Tab 切换
+    // ═══════════════════════════════════════════════
+    private void ShowTab(PlayerMenuTab tab)
+    {
+        _currentTab = tab;
+        _statusPage?.SetActive(tab == PlayerMenuTab.Status);
+        _inventoryPage?.SetActive(tab == PlayerMenuTab.Inventory);
+        RefreshTabVisuals();
+    }
+
+    private void RefreshTabVisuals()
+    {
+        ApplyTabStyle(_statusTabBtn,    _currentTab == PlayerMenuTab.Status);
+        ApplyTabStyle(_inventoryTabBtn, _currentTab == PlayerMenuTab.Inventory);
+    }
+
+    private void ApplyTabStyle(Button btn, bool active)
+    {
+        if (btn == null) return;
+        var lbl = btn.GetComponentInChildren<TMP_Text>();
+        if (lbl) lbl.color = active ? C_GOLD : C_TEXT_MUTED;
+        var ind = btn.transform.Find("Indicator")?.GetComponent<Image>();
+        if (ind)  ind.color = active ? C_GOLD : Color.clear;
+    }
+
+    // ═══════════════════════════════════════════════
+    //  游戏逻辑（装备/卸装）
+    // ═══════════════════════════════════════════════
+    private void EquipFromInventory(EquipmentItemData item)
+    {
+        if (item == null || _inventory == null || _equipment == null) return;
+        if (!_inventory.RemoveItem(item)) return;
+        var prev = _equipment.Equip(item);
+        if (prev != null) _inventory.AddItem(prev);
+        ShowItemDetail(item);
+        ShowTab(PlayerMenuTab.Inventory);
+    }
+
+    private void UnequipItem(EquipmentSlotType slot)
+    {
+        if (_inventory == null || _equipment == null) return;
+        var item = _equipment.Unequip(slot);
+        if (item != null)
+        {
+            _inventory.AddItem(item);
+            ShowItemDetail(item);
+            ShowTab(PlayerMenuTab.Inventory);
+        }
+    }
+
+    // ═══════════════════════════════════════════════
+    //  UI 辅助方法
+    // ═══════════════════════════════════════════════
+    private RectTransform MakePanel(string name, Transform parent,
+        Color32 bg, Vector2 size, Color32 border, float bw)
+    {
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        var img = go.AddComponent<Image>();
+        img.color = bg;
+        var rect = go.GetComponent<RectTransform>();
+        rect.sizeDelta = size;
+        if (bw > 0f)
+        {
+            var bgo = new GameObject("Border");
+            bgo.transform.SetParent(go.transform, false);
+            bgo.transform.SetAsFirstSibling();
+            bgo.AddComponent<Image>().color = border;
+            var br = bgo.GetComponent<RectTransform>();
+            br.anchorMin = Vector2.zero; br.anchorMax = Vector2.one;
+            br.offsetMin = new Vector2(-bw,-bw); br.offsetMax = new Vector2(bw,bw);
+        }
+        return rect;
+    }
+
+    private TMP_Text MakeText(string name, Transform parent, string value,
+        float fontSize, FontStyles style, TextAlignmentOptions align,
+        Vector2 pos, Vector2 size, Vector2? anchor = null)
+    {
+        var go  = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        var t   = go.AddComponent<TextMeshProUGUI>();
+        if (bodyFont    != null) t.font = bodyFont;
+        if (fontMaterial!= null) t.fontSharedMaterial = fontMaterial;
+        t.text  = value; t.fontSize = fontSize; t.fontStyle = style;
+        t.alignment = align; t.enableWordWrapping = true;
+        t.color = C_TEXT_PRIMARY;
+        var r = t.rectTransform;
+        var a = anchor ?? new Vector2(0f,1f);
+        r.anchorMin = r.anchorMax = r.pivot = a;
+        r.anchoredPosition = pos; r.sizeDelta = size;
+        return t;
+    }
+
+    private Button MakeMagicBtn(string name, Transform parent, string label,
+        Vector2 pos, Vector2 size, Color32 bg, Color32 border, Vector2? anchor = null)
+    {
+        var go  = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        var img = go.AddComponent<Image>();
+        img.color = bg;
+        var btn = go.AddComponent<Button>();
+        btn.targetGraphic = img;
+        var cb = btn.colors;
+        cb.normalColor     = bg;
+        cb.highlightedColor = new Color32(
+            (byte)Mathf.Min(bg.r+20,255),(byte)Mathf.Min(bg.g+20,255),(byte)Mathf.Min(bg.b+20,255),bg.a);
+        cb.pressedColor  = new Color32(
+            (byte)Mathf.Max(bg.r-10,0),(byte)Mathf.Max(bg.g-10,0),(byte)Mathf.Max(bg.b-10,0),bg.a);
+        cb.disabledColor = new Color32(50,50,50,128);
+        btn.colors = cb;
+
+        var rect = btn.GetComponent<RectTransform>();
+        var a = anchor ?? new Vector2(1f,1f);
+        rect.anchorMin = rect.anchorMax = rect.pivot = a;
+        rect.sizeDelta = size; rect.anchoredPosition = pos;
+
+        // 边框
+        var bgo = new GameObject("Border");
+        bgo.transform.SetParent(go.transform, false);
+        bgo.transform.SetAsFirstSibling();
+        bgo.AddComponent<Image>().color = border;
+        var br = bgo.GetComponent<RectTransform>();
+        br.anchorMin = Vector2.zero; br.anchorMax = Vector2.one;
+        br.offsetMin = new Vector2(-1f,-1f); br.offsetMax = new Vector2(1f,1f);
+
+        // 文字
+        var lbl = MakeText("Label", rect, label, 13f, FontStyles.Bold,
+            TextAlignmentOptions.Center, Vector2.zero, Vector2.zero, new Vector2(0.5f,0.5f));
+        lbl.rectTransform.anchorMin = Vector2.zero;
+        lbl.rectTransform.anchorMax = Vector2.one;
+        lbl.rectTransform.offsetMin = lbl.rectTransform.offsetMax = Vector2.zero;
+        lbl.color = border;
+        ApplyTitleFont(lbl);
+        return btn;
+    }
+
+    private RectTransform MakeGridContent(string name, RectTransform parent, Vector2 pos, Vector2 size)
+    {
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        var rect = go.AddComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0f,1f); rect.anchorMax = new Vector2(0f,1f);
+        rect.pivot = new Vector2(0f,1f);
+        rect.anchoredPosition = pos; rect.sizeDelta = size;
+
+        var g = go.AddComponent<GridLayoutGroup>();
+        g.cellSize        = new Vector2(slotSize,slotSize);
+        g.spacing         = new Vector2(slotGap,slotGap);
+        g.startCorner     = GridLayoutGroup.Corner.UpperLeft;
+        g.startAxis       = GridLayoutGroup.Axis.Horizontal;
+        g.childAlignment  = TextAnchor.UpperLeft;
+        g.constraint      = GridLayoutGroup.Constraint.FixedColumnCount;
+        g.constraintCount = gridCols;
+
+        var csf = go.AddComponent<ContentSizeFitter>();
+        csf.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+        return rect;
+    }
+
+    private RectTransform MakeListContent(string name, RectTransform parent,
+        Vector2 offsetMin, Vector2 offsetMax)
+    {
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        var rect = go.AddComponent<RectTransform>();
+        rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one;
+        rect.offsetMin = offsetMin; rect.offsetMax = offsetMax;
+
+        var vlg = go.AddComponent<VerticalLayoutGroup>();
+        vlg.spacing = 8f;
+        vlg.childAlignment = TextAnchor.UpperLeft;
+        vlg.childControlWidth = true; vlg.childControlHeight = false;
+        vlg.childForceExpandWidth = true; vlg.childForceExpandHeight = false;
+
+        go.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+        return rect;
+    }
+
+    private RectTransform MakeRect(string name, Transform parent,
+        Vector2 anchorMin, Vector2 anchorMax, Vector2 pos, Vector2 size)
+    {
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        var r = go.AddComponent<RectTransform>();
+        r.anchorMin = anchorMin; r.anchorMax = anchorMax;
+        r.pivot = new Vector2(0.5f, anchorMin.y);
+        r.anchoredPosition = pos; r.sizeDelta = size;
+        return r;
+    }
+
+    private void MakeDivider(string name, Transform parent,
+        Vector2 aMin, Vector2 aMax, Vector2 pos, Vector2 size)
+    {
+        var r = MakeRect(name, parent, aMin, aMax, pos, size);
+        r.GetOrAdd<Image>().color = C_BORDER;
+    }
+
+    private void AddSectionLabel(string name, RectTransform parent, string text)
+    {
+        MakeDivider(name+"Div", parent, new Vector2(0f,1f), new Vector2(1f,1f),
+            new Vector2(0f,-44f), new Vector2(0f,1f));
+        var lbl = MakeText(name, parent, text.ToUpper(), 12f, FontStyles.Bold,
+            TextAlignmentOptions.Left, new Vector2(16f,-12f), new Vector2(300f,22f));
+        lbl.color = C_PURPLE;
+        lbl.characterSpacing = 3f;
+        ApplyTitleFont(lbl);
+    }
+
+    private GameObject MakePage(string name, Transform parent, Vector2 pos, Vector2 size)
+    {
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        var r = go.AddComponent<RectTransform>();
+        r.anchorMin = new Vector2(0f,1f); r.anchorMax = new Vector2(0f,1f);
+        r.pivot = new Vector2(0f,1f);
+        r.anchoredPosition = pos; r.sizeDelta = size;
+        return go;
+    }
+
+    private void ApplyTitleFont(TMP_Text t)
+    {
+        if (titleFont != null) t.font = titleFont;
+    }
+
+    private void SetVisible(bool v)
+    {
+        if (_panelGo != null) _panelGo.SetActive(v);
+    }
+
+    private void ClearChildren(Transform p)
+    {
+        for (int i = p.childCount-1; i >= 0; i--) Destroy(p.GetChild(i).gameObject);
+    }
+
+    private void EnsureEventSystem()
+    {
+        if (FindObjectOfType<EventSystem>() != null) return;
+        var go = new GameObject("EventSystem");
+        go.AddComponent<EventSystem>();
+        go.AddComponent<StandaloneInputModule>();
+    }
+
+    private static void AddPtrEvent(EventTrigger et, EventTriggerType type,
+        UnityEngine.Events.UnityAction<BaseEventData> cb)
+    {
+        var entry = new EventTrigger.Entry { eventID = type };
+        entry.callback.AddListener(cb);
+        et.triggers.Add(entry);
+    }
+}
+
+// ═══════════════════════════════════════════════════════
+//  扩展方法（放在同文件或单独文件均可）
+// ═══════════════════════════════════════════════════════
+public static class RectTransformEx
+{
+    public static T GetOrAdd<T>(this GameObject go) where T : Component
+        => go.GetComponent<T>() ?? go.AddComponent<T>();
+}

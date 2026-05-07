@@ -1,0 +1,691 @@
+fileFormatVersion: 2
+guid: 84a6158b4a4056d41b22ffe3ee4df8b2
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 45
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TreeMan1_0
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1833
+        width: 324
+        height: 381
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 191308c7e99dc6449b0a73cd1005c82f
+      internalID: -298499897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_1
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 1834
+        width: 325
+        height: 379
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 323c84ef9ed88204183ae05ff15bb2f2
+      internalID: -1884595724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1833
+        width: 325
+        height: 383
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1191384af06d5b42ad67d85e3d404e4
+      internalID: -740464897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_3
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 1835
+        width: 327
+        height: 378
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b7f7f9e82cc784da3e06a43ca3fc9d
+      internalID: 860261135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_8
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 1109
+        width: 331
+        height: 349
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4671092340574a74080455c9c6a0ffb8
+      internalID: -2125359748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_9
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 1106
+        width: 385
+        height: 354
+      alignment: 9
+      pivot: {x: 0.4244415, y: 0.49516615}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5b04b1a91a42f243b9ce9811b46afda
+      internalID: 973578667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_10
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 1110
+        width: 449
+        height: 356
+      alignment: 9
+      pivot: {x: 0.3361232, y: 0.48077324}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 596617358d6decc49a05a1f5be46bb6e
+      internalID: 56477063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_11
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 1109
+        width: 305
+        height: 352
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c12f5355187a0f4da22789db5721598
+      internalID: -1734867049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_12
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 738
+        width: 309
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b54c595f006cfab4f8963556d9635b3b
+      internalID: 1075158385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_13
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 738
+        width: 312
+        height: 354
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e766ef8f4d6b0ea4ba040299adba6bee
+      internalID: -1044203657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_14
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 736
+        width: 328
+        height: 373
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ae5ed7fb39eba54fb80a750f7b2f5c9
+      internalID: -1575788504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_15
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 738
+        width: 309
+        height: 354
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29baeb2e572c10b42a3f5630eb296e5e
+      internalID: -1653275453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_16
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 383
+        width: 417
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf071fa3b05aaec43bddc38e71713ada
+      internalID: 272493500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_18
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 378
+        width: 332
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56993faa7a6c5c1488cf6014a1ef1214
+      internalID: -1432373996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_19
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 371
+        width: 309
+        height: 354
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b868791879432b44bba55d0803992941
+      internalID: -1218258409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_20
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 33
+        width: 307
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66f954ee3064a6345891632e69890ec7
+      internalID: 266121802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_21
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 33
+        width: 307
+        height: 355
+      alignment: 9
+      pivot: {x: 0.4698717, y: 0.48313862}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85601536f3fbf884a9eb55d9c358377c
+      internalID: 1893835825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_22
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 32
+        width: 319
+        height: 323
+      alignment: 9
+      pivot: {x: 0.46648997, y: 0.5514628}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ae40b6d90b12448bdb3bb539411bd7
+      internalID: -521117233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_23
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 34
+        width: 356
+        height: 246
+      alignment: 9
+      pivot: {x: 0.45493102, y: 0.77048045}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c392eede8e3f24d8b2e1da77cc9a45
+      internalID: -2115366118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_5
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1477
+        width: 296
+        height: 346
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67e9e11341956aa46b2cfcd48a601219
+      internalID: -2076528148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_4
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1473
+        width: 264
+        height: 354
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45543761b73d21e4797461bcd723f295
+      internalID: -1685403735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_7
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 1481
+        width: 273
+        height: 346
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8895121be08c58444aacc43a1cae8841
+      internalID: 2126037571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_6
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 1478
+        width: 271
+        height: 343
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c02eea90b7eb6b4bb21471f25b6211e
+      internalID: 1229653341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_24
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 1479
+        width: 254
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af9b08854c190b043978a314990128bc
+      internalID: -1235925616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeMan1_25
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 1478
+        width: 265
+        height: 343
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f33b2d8049a4464c984ad784f7560cb
+      internalID: 1919470214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      TreeMan1_0: -298499897
+      TreeMan1_1: -1884595724
+      TreeMan1_10: 56477063
+      TreeMan1_11: -1734867049
+      TreeMan1_12: 1075158385
+      TreeMan1_13: -1044203657
+      TreeMan1_14: -1575788504
+      TreeMan1_15: -1653275453
+      TreeMan1_16: 272493500
+      TreeMan1_17: 1410501154
+      TreeMan1_18: -1432373996
+      TreeMan1_19: -1218258409
+      TreeMan1_2: -740464897
+      TreeMan1_20: 266121802
+      TreeMan1_21: 1893835825
+      TreeMan1_22: -521117233
+      TreeMan1_23: -2115366118
+      TreeMan1_24: -1235925616
+      TreeMan1_25: 1919470214
+      TreeMan1_3: 860261135
+      TreeMan1_4: -1685403735
+      TreeMan1_5: -2076528148
+      TreeMan1_6: 1229653341
+      TreeMan1_7: 2126037571
+      TreeMan1_8: -2125359748
+      TreeMan1_9: 973578667
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

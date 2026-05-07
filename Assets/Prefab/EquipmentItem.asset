@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a14ae35c07799146be5992e37a2b8ee, type: 3}
+  m_Name: EquipmentItem
+  m_EditorClassIdentifier: 
+  itemId: 
+  itemName: "\u6CC9\u6C34\u6212\u6307"
+  icon: {fileID: 21300000, guid: 8bb7d5e29c317f047beab2632a9a2cc3, type: 3}
+  description: "\u9057\u843D\u5728\u9057\u8FF9\u4E2D\u7684\u6212\u6307"
+  slotType: 0
+  goldValue: 0
+  statBonuses:
+    maxHealth: 10
+    attackPower: 10
+    moveSpeed: 0
+    jumpForce: 0
+    dashSpeed: 0
