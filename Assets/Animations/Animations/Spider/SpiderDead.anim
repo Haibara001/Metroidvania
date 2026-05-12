@@ -27,7 +27,7 @@ AnimationClip:
     - time: 0.2
       value: {fileID: -1628042366, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
     - time: 0.3
-      value: {fileID: -1068808934, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
+      value: {fileID: -1628042366, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
     - time: 0.4
       value: {fileID: -1185462577, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
     - time: 0.5
@@ -57,7 +57,7 @@ AnimationClip:
     - {fileID: -1199011561, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
     - {fileID: 1629056411, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
     - {fileID: -1628042366, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
-    - {fileID: -1068808934, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
+    - {fileID: -1628042366, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
     - {fileID: -1185462577, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
     - {fileID: 2023006424, guid: 8bf3685b31a7ed64bb22012a68dedb2b, type: 3}
   m_AnimationClipSettings:

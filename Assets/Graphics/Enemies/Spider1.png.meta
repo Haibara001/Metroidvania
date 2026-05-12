@@ -1071,12 +1071,12 @@ TextureImporter:
       name: Spider1_79
       rect:
         serializedVersion: 2
-        x: 258
-        y: 12
+        x: 260
+        y: 20
         width: 217
-        height: 178
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 171
+      alignment: 9
+      pivot: {x: 0.5000001, y: 0.538963}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1092,12 +1092,12 @@ TextureImporter:
       name: Spider1_81
       rect:
         serializedVersion: 2
-        x: 496
-        y: 22
+        x: 498
+        y: 23
         width: 209
         height: 173
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.48986378, y: 0.53673726}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

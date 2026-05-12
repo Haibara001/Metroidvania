@@ -23,7 +23,13 @@ public class WitchThrowing : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, lifetime);
+        // SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        // if (sr != null)
+        // {
+        //     sr.sortingLayerName = "Player";
+        //     sr.sortingOrder = 0;
+        // }
+        // Destroy(gameObject, lifetime);
     }
 
     private void Update()

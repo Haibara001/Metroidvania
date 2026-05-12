@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2569027876643824988}
   - component: {fileID: 8743074714062927430}
   - component: {fileID: 3170194939637927718}
+  - component: {fileID: 5534198280000000001}
   m_Layer: 0
   m_Name: SpiderNet
   m_TagString: Untagged
@@ -115,7 +116,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -129,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 6.5, y: 9.4}
   m_EdgeRadius: 0
 --- !u!114 &3170194939637927718
 MonoBehaviour:
@@ -144,8 +145,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  lifetime: 4
+  lifetime: 1.75
   hitLayer:
     serializedVersion: 2
     m_Bits: 64
   destroyOnHit: 1
+--- !u!50 &5534198280000000001
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6561851465019945869}
+  serializedVersion: 4
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CollisionDetection: 0
+  m_SleepingMode: 1
+  m_Interpolation: 0
+  m_Constraints: 7

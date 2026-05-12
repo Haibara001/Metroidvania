@@ -75,6 +75,12 @@ public class Enemy : Entity, IDamageable
         return isDead;
     }
 
+    public float CurrentHealth => currentHealth;
+
+    public float MaxHealth => maxHealth;
+
+    public float HealthPercent => maxHealth > 0f ? currentHealth / maxHealth : 0f;
+
     public virtual void FinalizeDeath()
     {
         DeathFinalized?.Invoke(this);

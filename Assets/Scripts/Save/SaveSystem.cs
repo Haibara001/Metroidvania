@@ -62,6 +62,70 @@ public class SaveSystem : MonoBehaviour
 
     public bool HasSave(int slot) => File.Exists(GetSlotPath(slot));
 
+    public static bool HasSaveStatic(int slot)
+    {
+        return File.Exists(GetSlotPathStatic(slot));
+    }
+
+    public static int GetMostRecentSaveSlot(int slotCount = 3)
+    {
+        int bestSlot = -1;
+        DateTime bestTime = DateTime.MinValue;
+
+        for (int slot = 0; slot < slotCount; slot++)
+        {
+            string path = GetSlotPathStatic(slot);
+
+            if (!File.Exists(path))
+            {
+                continue;
+            }
+
+            DateTime lastWriteTime = File.GetLastWriteTime(path);
+            if (bestSlot < 0 || lastWriteTime > bestTime)
+            {
+                bestSlot = slot;
+                bestTime = lastWriteTime;
+            }
+        }
+
+        return bestSlot;
+    }
+
+    public static bool LoadFromSlotStatic(int slot)
+    {
+        string path = GetSlotPathStatic(slot);
+        if (!File.Exists(path))
+        {
+            return false;
+        }
+
+        try
+        {
+            string json = File.ReadAllText(path);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+            if (data == null)
+            {
+                return false;
+            }
+
+            pendingLoadData = data;
+
+            string targetScene = !string.IsNullOrEmpty(data.sceneName)
+                ? data.sceneName
+                : SceneManager.GetActiveScene().name;
+
+            SceneManager.LoadScene(targetScene);
+            return true;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to load save slot " + slot + ": " + e.Message);
+            return false;
+        }
+    }
+
     public string GetSaveTime(int slot)
     {
         string path = GetSlotPath(slot);
@@ -104,31 +168,7 @@ public class SaveSystem : MonoBehaviour
 
     public bool Load(int slot, Player player)
     {
-        string path = GetSlotPath(slot);
-        if (!File.Exists(path))
-        {
-            return false;
-        }
-
-        try
-        {
-            string json = File.ReadAllText(path);
-            SaveData data = JsonUtility.FromJson<SaveData>(json);
-            pendingLoadData = data;
-
-            string targetScene = !string.IsNullOrEmpty(data.sceneName)
-                ? data.sceneName
-                : SceneManager.GetActiveScene().name;
-
-            SceneManager.LoadScene(targetScene);
-
-            return true;
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Failed to load save slot " + slot + ": " + e.Message);
-            return false;
-        }
+        return LoadFromSlotStatic(slot);
     }
 
     public void DeleteSave(int slot)
@@ -667,5 +707,10 @@ public class SaveSystem : MonoBehaviour
 
         int siblingIndex = target.GetSiblingIndex();
         return target.name + "[" + siblingIndex + "]";
+    }
+
+    private static string GetSlotPathStatic(int slot)
+    {
+        return Path.Combine(SaveDirectory, $"save_{slot}.json");
     }
 }

@@ -18,7 +18,7 @@ public class MiniBossMoveState : EnemyState
     public override void Update()
     {
         base.Update();
-        enemy.SetVelocity(enemy.moveSpeed * enemy.facingDir, enemy.rb.velocity.y);
+        enemy.SetVelocity(enemy.GetCurrentMoveSpeed() * enemy.facingDir, enemy.rb.velocity.y);
 
         if (enemy.CanStartAttack())
         {

@@ -65,6 +65,11 @@ public class Enemy_MiniBoss : Enemy
     [Header("Boss Attack Patterns")]
     [SerializeField] private BossAttackDefinition[] bossAttackPatterns;
 
+    [Header("Phase Two")]
+    [SerializeField] [Range(0.05f, 0.95f)] private float phaseTwoHealthPercent = 0.5f;
+    [SerializeField] private float phaseTwoMoveSpeedMultiplier = 1.5f;
+    [SerializeField] private float phaseTwoCooldownMultiplier = 0.6f;
+
     private Transform playerTransform;
     private IAggroTarget currentTarget;
     private float attackCooldownTimer;
@@ -185,6 +190,16 @@ public class Enemy_MiniBoss : Enemy
     public bool IsAttackOnCooldown()
     {
         return attackCooldownTimer > 0f;
+    }
+
+    public bool IsPhaseTwo()
+    {
+        return !IsDead() && HealthPercent <= phaseTwoHealthPercent;
+    }
+
+    public float GetCurrentMoveSpeed()
+    {
+        return IsPhaseTwo() ? moveSpeed * phaseTwoMoveSpeedMultiplier : moveSpeed;
     }
 
     public void StartAttackCooldown()
@@ -440,7 +455,7 @@ public class Enemy_MiniBoss : Enemy
             }
 
             float maxAllowedRange = attack.maxRange > 0f ? attack.maxRange : attackRange;
-            bool isHealthUnlocked = healthPercent <= attack.unlockBelowHealthPercent;
+            bool isHealthUnlocked = attack.unlockBelowHealthPercent <= 0f || healthPercent <= attack.unlockBelowHealthPercent;
 
             if (isHealthUnlocked && distanceToPlayer >= attack.minRange && distanceToPlayer <= maxAllowedRange)
             {
@@ -502,7 +517,14 @@ public class Enemy_MiniBoss : Enemy
     private float GetCurrentAttackCooldown()
     {
         BossAttackDefinition attack = GetQueuedAttackDefinition();
-        return attack != null ? attack.cooldown : attackCooldown;
+        float baseCooldown = attack != null ? attack.cooldown : attackCooldown;
+
+        if (IsPhaseTwo())
+        {
+            baseCooldown *= phaseTwoCooldownMultiplier;
+        }
+
+        return baseCooldown;
     }
 
     private bool IsTargetWithinAnyAttackRange(float distanceToPlayer)
@@ -518,7 +540,7 @@ public class Enemy_MiniBoss : Enemy
         {
             BossAttackDefinition attack = bossAttackPatterns[i];
 
-            if (attack == null || healthPercent > attack.unlockBelowHealthPercent)
+            if (attack == null || (attack.unlockBelowHealthPercent > 0f && healthPercent > attack.unlockBelowHealthPercent))
             {
                 continue;
             }
