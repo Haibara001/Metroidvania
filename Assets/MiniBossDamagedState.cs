@@ -13,6 +13,7 @@ public class MiniBossDamagedState : EnemyState
     {
         base.Enter();
         enemy.ZeroVelocity();
+        enemy.PlayDamagedSFX();
         enemy.PlayDamagedAnimation();
         stateTimer = enemy.GetDamagedStateDuration();
     }

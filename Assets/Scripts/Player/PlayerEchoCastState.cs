@@ -10,6 +10,7 @@ public class PlayerEchoCastState : PlayerState
     {
         base.Enter();
         player.ZeroVelocity();
+        player.PlayEchoCastSFX();
     }
 
     public override void Update()

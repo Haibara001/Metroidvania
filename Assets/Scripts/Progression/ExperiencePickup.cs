@@ -10,6 +10,7 @@ public class ExperiencePickup : MonoBehaviour
     [SerializeField] private float absorbDistance = 0.35f;
     [SerializeField] private float minFlySpeed = 4f;
     [SerializeField] private float maxFlySpeed = 12f;
+    [SerializeField] private AudioClip pickupSFX;
     [SerializeField] private float acceleration = 18f;
 
     private PlayerProgression targetProgression;
@@ -72,6 +73,9 @@ public class ExperiencePickup : MonoBehaviour
         {
             progression.AddGold(goldAmount);
         }
+
+        if (SFXManager.instance != null)
+            SFXManager.instance.PlaySFX(pickupSFX);
 
         if (destroyAfterPickup)
         {

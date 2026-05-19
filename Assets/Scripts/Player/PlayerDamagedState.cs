@@ -18,6 +18,7 @@ public class PlayerDamagedState : PlayerState
 
         facingDirectionBeforeDamage = player.facingDir;
         player.ZeroVelocity();
+        player.PlayHitSFX();
         player.SetFacingDirection(facingDirectionBeforeDamage);
         stateTimer = knockbackDuration;
     }

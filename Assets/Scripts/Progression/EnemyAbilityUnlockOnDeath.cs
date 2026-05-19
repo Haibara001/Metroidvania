@@ -41,6 +41,9 @@ public class EnemyAbilityUnlockOnDeath : MonoBehaviour
             return;
         }
 
-        player.UnlockAbility(abilityToUnlock);
+        if (player.UnlockAbility(abilityToUnlock))
+        {
+            UI_AbilityNotification.Show(abilityToUnlock);
+        }
     }
 }

@@ -14,6 +14,7 @@ public class PlayerWallJumpState : PlayerState
 
         stateTimer = .4f;
         player.SetVelocity(5 * -player.facingDir, player.jumpForce);
+        player.PlayWallJumpSFX();
 
     }
 

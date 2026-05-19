@@ -25,6 +25,7 @@ public class PlayerPrimaryAttackState : PlayerState
         }
 
         player.anim.SetInteger("CombCounter", combCounter);
+        player.PlayAttackSFX(combCounter);
 
         float attackDir = player.facingDir;
 

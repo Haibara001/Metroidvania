@@ -10,6 +10,7 @@ public class PlayerEchoSwapState : PlayerState
     {
         base.Enter();
         player.ZeroVelocity();
+        player.PlayEchoSwapSFX();
     }
 
     public override void Update()

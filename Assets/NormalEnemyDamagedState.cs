@@ -11,6 +11,7 @@ public class NormalEnemyDamagedState : EnemyState
     {
         base.Enter();
         enemy.ZeroVelocity();
+        enemy.PlayDamagedSFX();
         stateTimer = enemy.GetDamagedStateDuration();
     }
 

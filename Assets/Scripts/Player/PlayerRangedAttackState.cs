@@ -13,6 +13,7 @@ public class PlayerRangedAttackState : PlayerState
         base.Enter();
         projectileFired = false;
         player.ZeroVelocity();
+        player.PlayRangedAttackSFX();
         stateTimer = 1f;
     }
 

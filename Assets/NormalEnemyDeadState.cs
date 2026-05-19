@@ -11,6 +11,7 @@ public class NormalEnemyDeadState : EnemyState
     {
         base.Enter();
         enemy.ZeroVelocity();
+        enemy.PlayDeadSFX();
         stateTimer = enemy.GetDeadStateDuration();
     }
 

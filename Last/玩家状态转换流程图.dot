@@ -1,0 +1,167 @@
+
+digraph PlayerFSM {
+    rankdir=TB;
+    fontname="SimHei";
+    fontsize=14;
+    label="玩家状态转换流程图";
+    labelloc=t;
+    labeljust=c;
+
+    // Global graph settings
+    node [fontname="SimHei", fontsize=10, shape=box, style="rounded,filled", penwidth=1.2];
+    edge [fontname="SimHei", fontsize=8];
+
+    // ---- Color scheme ----
+    // Ground states: green
+    // Air states: blue
+    // Ability states: purple
+    // Combat states: red
+    // Damaged: orange
+    // Echo states: teal
+
+    // ===== GROUND LAYER =====
+    subgraph cluster_ground {
+        label="地面状态层";
+        fontname="SimHei";
+        fontsize=11;
+        style="rounded,dashed";
+        color="#82B366";
+        bgcolor="#F5FBF5";
+
+        Idle [label="Idle\n待机", fillcolor="#D5E8D4", color="#82B366"];
+        Move [label="Move\n移动", fillcolor="#D5E8D4", color="#82B366"];
+        GroundedState [label="...GroundedState\n(地面中间基类)\n重置空中次数", fillcolor="#E8F5E0", color="#82B366", fontsize=9, style="rounded,dotted"];
+    }
+
+    // ===== AIR STATES =====
+    subgraph cluster_air {
+        label="空中状态";
+        fontname="SimHei";
+        fontsize=11;
+        style="rounded,dashed";
+        color="#6C8EBF";
+        bgcolor="#F5F8FC";
+
+        Air [label="Air\n空中\n(80%空中速度控制)", fillcolor="#DAE8FC", color="#6C8EBF"];
+        Jump [label="Jump\n跳跃", fillcolor="#DAE8FC", color="#6C8EBF"];
+        WallSlide [label="WallSlide\n墙滑\n(70%缓降/加速下滑)", fillcolor="#DAE8FC", color="#6C8EBF"];
+        WallJump [label="WallJump\n墙跳\n(0.4秒计时)", fillcolor="#DAE8FC", color="#6C8EBF"];
+    }
+
+    // ===== ABILITY STATES =====
+    subgraph cluster_ability {
+        label="特殊能力";
+        fontname="SimHei";
+        fontsize=11;
+        style="rounded,dashed";
+        color="#9673A6";
+        bgcolor="#FBF5FC";
+
+        Dash [label="Dash\n冲刺\n(无敌帧+穿层)", fillcolor="#E1D5E7", color="#9673A6"];
+        EchoCast [label="EchoCast\n回声施放", fillcolor="#E1D5E7", color="#9673A6"];
+        EchoSwap [label="EchoSwap\n回声交换\n(传送+爆炸)", fillcolor="#E1D5E7", color="#9673A6"];
+    }
+
+    // ===== COMBAT STATES =====
+    subgraph cluster_combat {
+        label="战斗状态";
+        fontname="SimHei";
+        fontsize=11;
+        style="rounded,dashed";
+        color="#B85450";
+        bgcolor="#FFF5F5";
+
+        PrimaryAttack [label="PrimaryAttack\n近战三段连击\n(combCounter 0-2)", fillcolor="#F8CECC", color="#B85450"];
+        RangedAttack [label="RangedAttack\n远程攻击\n(投射物)", fillcolor="#F8CECC", color="#B85450"];
+    }
+
+    // ===== OTHER =====
+    Damaged [label="Damaged\n受击\n(击退+硬直)", fillcolor="#FFE6CC", color="#D79B00"];
+
+    // ---- Hidden ground base link ----
+    GroundedState -> Idle [style=invis];
+    GroundedState -> Move [style=invis];
+
+    // ============================================================
+    // TRANSITIONS
+    // ============================================================
+
+    // Idle <-> Move
+    Idle -> Move [label="xInput != 0", color="#82B366"];
+    Move -> Idle [label="xInput == 0", color="#82B366"];
+
+    // Ground -> Jump
+    Idle -> Jump [label="Space", color="#6C8EBF"];
+    Move -> Jump [label="Space", color="#6C8EBF"];
+
+    // Ground -> Attack
+    Idle -> PrimaryAttack [label="Mouse0", color="#B85450"];
+    Move -> PrimaryAttack [label="Mouse0", color="#B85450"];
+
+    // Ground -> Air (walk off ledge)
+    Idle -> Air [label="!IsGroundDetected", color="#888888"];
+    Move -> Air [label="!IsGroundDetected", color="#888888"];
+
+    // Jump -> Air (falling)
+    Jump -> Air [label="velocity.y < 0", color="#6C8EBF"];
+
+    // Air -> Jump (double jump)
+    Air -> Jump [label="Space + DoubleJump\n+ remainingAirJumps > 0", color="#6C8EBF"];
+
+    // Air -> WallSlide
+    Air -> WallSlide [label="IsWallDetected\n+ WallJump unlocked", color="#6C8EBF"];
+
+    // Air -> Ground
+    Air -> Idle [label="IsGroundDetected", color="#888888"];
+
+    // WallSlide -> WallJump
+    WallSlide -> WallJump [label="Space", color="#6C8EBF"];
+
+    // WallSlide -> Air (leave wall)
+    WallSlide -> Air [label="!IsWallDetected\n或 !CanUseWallJump", color="#888888"];
+
+    // WallJump -> Air (timer)
+    WallJump -> Air [label="timer > 0.4s", color="#6C8EBF"];
+
+    // ===== DASH (from many states) =====
+    Idle -> Dash [label="LeftShift + Dash", color="#9673A6", style="dashed"];
+    Move -> Dash [label="LeftShift + Dash", color="#9673A6", style="dashed"];
+    Air -> Dash [label="LeftShift + AirDash\n+ remainingAirDashes", color="#9673A6", style="dashed"];
+    WallSlide -> Dash [label="LeftShift", color="#9673A6", style="dashed"];
+
+    // Dash -> (after dash ends)
+    Dash -> Idle [label="timer end\n+ IsGroundDetected", color="#888888"];
+    Dash -> Air [label="timer end\n+ !IsGroundDetected", color="#888888"];
+    Dash -> WallSlide [label="timer end\n+ IsWallDetected", color="#888888"];
+
+    // ===== ATTACK -> back =====
+    PrimaryAttack -> Idle [label="动画结束", color="#B85450"];
+    PrimaryAttack -> Air [label="if 离地", color="#888888"];
+    RangedAttack -> Idle [label="动画结束", color="#B85450"];
+
+    // ===== ECHO =====
+    Idle -> EchoCast [label="Q (无分身时)", color="#E1D5E7"];
+    Move -> EchoCast [label="Q (无分身时)", color="#E1D5E7"];
+    Air -> EchoCast [label="Q (无分身时)", color="#E1D5E7"];
+    EchoCast -> Idle [label="动画结束", color="#888888"];
+
+    Idle -> EchoSwap [label="Q (有分身时)", color="#E1D5E7"];
+    Move -> EchoSwap [label="Q (有分身时)", color="#E1D5E7"];
+    Air -> EchoSwap [label="Q (有分身时)", color="#E1D5E7"];
+    EchoSwap -> Idle [label="动画结束", color="#888888"];
+
+    // ===== DAMAGED =====
+    Idle -> Damaged [label="TakeDamage", color="#D79B00", style="bold"];
+    Move -> Damaged [label="TakeDamage", color="#D79B00", style="bold"];
+    Air -> Damaged [label="TakeDamage", color="#D79B00", style="bold"];
+    Jump -> Damaged [label="TakeDamage
+(非攻击中)", color="#D79B00", style="bold"];
+    WallSlide -> Damaged [label="TakeDamage", color="#D79B00", style="bold"];
+
+    Damaged -> Idle [label="计时结束 + xInput==0", color="#D79B00"];
+    Damaged -> Move [label="计时结束 + xInput!=0", color="#D79B00"];
+
+    // ===== RANGED ATTACK =====
+    Idle -> RangedAttack [label="Mouse1 + RangedAttack unlocked", color="#B85450", style="dashed"];
+    Move -> RangedAttack [label="Mouse1 + RangedAttack unlocked", color="#B85450", style="dashed"];
+}

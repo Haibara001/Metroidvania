@@ -9,12 +9,27 @@ public class Enemy : Entity, IDamageable
     public float moveSpeed;
     public float idleTime;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip sfxAttack;
+    [SerializeField] private AudioClip sfxDamaged;
+    [SerializeField] private AudioClip sfxDead;
+
     [Header("Stats")]
     [SerializeField] protected float maxHealth = 400f;
     protected float currentHealth;
     [SerializeField] protected float damagedStateDuration = 0.2f;
     [SerializeField] protected float deadStateDuration = 0.6f;
     protected bool isDead;
+
+    [Header("Damage Popup")]
+    [SerializeField] private bool showDamagePopup = true;
+    [SerializeField] private float popupFontSize = 4f;
+    [SerializeField] private Color popupColor = Color.white;
+    [SerializeField] private TMPro.TMP_FontAsset popupFont;
+    [SerializeField] private string popupSortingLayer = "Player";
+    [SerializeField] private int popupSortingOrder = 50;
+    [SerializeField] private float popupOffsetY = 0.8f;
+    [SerializeField] private float popupRandomOffsetX = 0.3f;
 
     [Header("Rewards")]
     [SerializeField] protected int experienceReward = 10;
@@ -47,6 +62,11 @@ public class Enemy : Entity, IDamageable
 
         currentHealth -= damage;
 
+        if (showDamagePopup)
+        {
+            DamagePopup.Create(transform.position, damage, popupFontSize, popupColor, popupFont, popupSortingLayer, popupSortingOrder, popupOffsetY, popupRandomOffsetX);
+        }
+
         if (currentHealth <= 0f)
         {
             Die();
@@ -74,6 +94,16 @@ public class Enemy : Entity, IDamageable
     {
         return isDead;
     }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        if (clip != null && SFXManager.instance != null)
+            SFXManager.instance.PlaySFX(clip);
+    }
+
+    public void PlayAttackSFX() => PlaySFX(sfxAttack);
+    public void PlayDamagedSFX() => PlaySFX(sfxDamaged);
+    public void PlayDeadSFX() => PlaySFX(sfxDead);
 
     public float CurrentHealth => currentHealth;
 

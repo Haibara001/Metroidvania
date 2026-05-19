@@ -18,6 +18,7 @@ public class PlayerDashState : PlayerState
         invincibleTimer = player.dashInvincibleDuration;
         player.isInvincible = true;
         player.SetDashPassThrough(true);
+        player.PlayDashSFX();
     }
 
     public override void Exit()

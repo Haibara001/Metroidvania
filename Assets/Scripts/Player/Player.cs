@@ -55,6 +55,19 @@ public class Player : Entity, IDamageable, IAggroTarget
     [SerializeField] private float rangedAttackCooldown = 0.5f;
     private float rangedAttackTimer;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip sfxJump;
+    [SerializeField] private AudioClip sfxDash;
+    [SerializeField] private AudioClip sfxAttack1;
+    [SerializeField] private AudioClip sfxAttack2;
+    [SerializeField] private AudioClip sfxAttack3;
+    [SerializeField] private AudioClip sfxRangedAttack;
+    [SerializeField] private AudioClip sfxHit;
+    [SerializeField] private AudioClip sfxWallSlide;
+    [SerializeField] private AudioClip sfxWallJump;
+    [SerializeField] private AudioClip sfxEchoCast;
+    [SerializeField] private AudioClip sfxEchoSwap;
+
     [Header("Echo swap info")]
     [SerializeField] private KeyCode echoSwapKey = KeyCode.Q;
     [SerializeField] private Vector2 echoSpawnOffset = new Vector2(0f, -0.5f);
@@ -240,12 +253,15 @@ public class Player : Entity, IDamageable, IAggroTarget
 
     public bool UnlockAbility(PlayerAbilityType ability)
     {
+        Debug.Log($"Player.UnlockAbility called: {ability}, already has it: {unlockedAbilities.Contains(ability)}");
+
         if (!unlockedAbilities.Add(ability))
         {
             return false;
         }
 
         ResetAirActions();
+        Debug.Log($"Player.UnlockAbility: {ability} unlocked successfully");
         return true;
     }
 
@@ -581,6 +597,30 @@ public class Player : Entity, IDamageable, IAggroTarget
             nearbyEchoPassage = null;
         }
     }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        if (SFXManager.instance != null)
+            SFXManager.instance.PlaySFX(clip);
+    }
+
+    public void PlayJumpSFX() => PlaySFX(sfxJump);
+    public void PlayDashSFX() => PlaySFX(sfxDash);
+    public void PlayAttackSFX(int comboIndex)
+    {
+        switch (comboIndex)
+        {
+            case 0: PlaySFX(sfxAttack1); break;
+            case 1: PlaySFX(sfxAttack2); break;
+            case 2: PlaySFX(sfxAttack3); break;
+        }
+    }
+    public void PlayRangedAttackSFX() => PlaySFX(sfxRangedAttack);
+    public void PlayHitSFX() => PlaySFX(sfxHit);
+    public void PlayWallSlideSFX() => PlaySFX(sfxWallSlide);
+    public void PlayWallJumpSFX() => PlaySFX(sfxWallJump);
+    public void PlayEchoCastSFX() => PlaySFX(sfxEchoCast);
+    public void PlayEchoSwapSFX() => PlaySFX(sfxEchoSwap);
 
     protected override void OnDrawGizmos()
     {

@@ -15,6 +15,7 @@ public class NormalEnemyAttackState : EnemyState
         base.Enter();
         enemy.ZeroVelocity();
         enemy.StartAttackCooldown();
+        enemy.PlayAttackSFX();
 
         Transform player = enemy.GetPlayerTransform();
         if (player != null && (player.position.x - enemy.transform.position.x) * enemy.facingDir < 0)

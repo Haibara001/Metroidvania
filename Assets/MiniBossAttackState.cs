@@ -35,6 +35,7 @@ public class MiniBossAttackState : EnemyState
 
         enemy.CommitQueuedAttack();
         enemy.StartAttackCooldown();
+        enemy.PlayCurrentAttackSFX();
         enemy.PlayAttackAnimation();
         stateTimer = enemy.GetCurrentAttackDuration();
     }

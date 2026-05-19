@@ -35,6 +35,9 @@ public class Enemy_MiniBoss : Enemy
         public bool isProjectile;
         public GameObject projectilePrefab;
         public Vector2 projectileSpawnOffset = new Vector2(1f, 0f);
+
+        [Header("SFX")]
+        public AudioClip attackSFX;
     }
 
     [Header("Targeting")]
@@ -65,6 +68,9 @@ public class Enemy_MiniBoss : Enemy
     [Header("Boss Attack Patterns")]
     [SerializeField] private BossAttackDefinition[] bossAttackPatterns;
 
+    [Header("Boss UI")]
+    [SerializeField] private string bossDisplayName = "Spider";
+
     [Header("Phase Two")]
     [SerializeField] [Range(0.05f, 0.95f)] private float phaseTwoHealthPercent = 0.5f;
     [SerializeField] private float phaseTwoMoveSpeedMultiplier = 1.5f;
@@ -75,6 +81,9 @@ public class Enemy_MiniBoss : Enemy
     private float attackCooldownTimer;
     private int queuedAttackIndex = -1;
     private int attackCycleCounter;
+    private bool healthBarAdded;
+
+    public string BossDisplayName => string.IsNullOrWhiteSpace(bossDisplayName) ? gameObject.name : bossDisplayName;
 
     protected override void Awake()
     {
@@ -150,6 +159,20 @@ public class Enemy_MiniBoss : Enemy
         {
             queuedAttackIndex = -1;
             return;
+        }
+
+        if (!healthBarAdded)
+        {
+            healthBarAdded = true;
+
+            BossScreenHealthBar healthBar = GetComponent<BossScreenHealthBar>();
+
+            if (healthBar == null)
+            {
+                healthBar = gameObject.AddComponent<BossScreenHealthBar>();
+            }
+
+            healthBar.Reveal();
         }
 
         if (CanStartAttack() && stateMachine.currentState != attackState)
@@ -319,6 +342,16 @@ public class Enemy_MiniBoss : Enemy
         if (attack != null)
         {
             PlayAnimationState(attack.animationStateName);
+        }
+    }
+
+    public void PlayCurrentAttackSFX()
+    {
+        BossAttackDefinition attack = GetQueuedAttackDefinition();
+
+        if (attack != null && attack.attackSFX != null)
+        {
+            PlaySFX(attack.attackSFX);
         }
     }
 

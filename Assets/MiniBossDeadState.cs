@@ -13,6 +13,7 @@ public class MiniBossDeadState : EnemyState
     {
         base.Enter();
         enemy.ZeroVelocity();
+        enemy.PlayDeadSFX();
         enemy.PlayDeadAnimation();
         stateTimer = enemy.GetDeadStateDuration();
     }

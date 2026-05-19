@@ -16,6 +16,7 @@ public class EquipmentPickup : MonoBehaviour
     [SerializeField] private bool addToInventoryOnPickup = true;
     [SerializeField] private bool autoEquipOnPickup;
     [SerializeField] private bool destroyAfterPickup = true;
+    [SerializeField] private AudioClip pickupSFX;
     [SerializeField] private Vector3 promptOffset = new Vector3(0f, 1.2f, 0f);
     [SerializeField] private Vector3 promptScale = new Vector3(0.2f, 0.2f, 0.2f);
 
@@ -36,6 +37,19 @@ public class EquipmentPickup : MonoBehaviour
         if (nearbyInventory == null || !Input.GetKeyDown(interactKey))
         {
             return;
+        }
+
+        // Collect ability first if exists
+        AbilityPickup abilityPickup = GetComponent<AbilityPickup>();
+
+        if (abilityPickup != null)
+        {
+            Player player = nearbyEquipment != null ? nearbyEquipment.GetComponent<Player>() : null;
+
+            if (player != null)
+            {
+                abilityPickup.CollectFromEquipment(player);
+            }
         }
 
         PickupItem();
@@ -125,7 +139,23 @@ public class EquipmentPickup : MonoBehaviour
             nearbyInventoryUi.OpenInventory();
         }
 
+        // Trigger AbilityPickup if exists
+        AbilityPickup abilityPickup = GetComponent<AbilityPickup>();
+
+        if (abilityPickup != null)
+        {
+            Player player = nearbyEquipment != null ? nearbyEquipment.GetComponent<Player>() : null;
+
+            if (player != null)
+            {
+                abilityPickup.CollectFromEquipment(player);
+            }
+        }
+
         SetPromptVisible(false);
+
+        if (SFXManager.instance != null)
+            SFXManager.instance.PlaySFX(pickupSFX);
 
         if (destroyAfterPickup)
         {
